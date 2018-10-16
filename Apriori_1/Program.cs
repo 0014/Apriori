@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Apriori_1.Services;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Apriori_1.Model;
-using Apriori_1.Services;
 
 namespace Apriori_1
 {

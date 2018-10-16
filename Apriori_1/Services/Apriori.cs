@@ -1,9 +1,5 @@
-﻿using System;
+﻿using Apriori_1.Model;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Apriori_1.Model;
 
 namespace Apriori_1.Services
 {
@@ -13,7 +9,29 @@ namespace Apriori_1.Services
         {
             var list = new List<string>();
 
+            
             return list;
+        }
+
+        public static List<Candidate> GenerateCandidates(List<Candidate> list)
+        {
+            var candidates = new List<Candidate>();
+
+            for (var i = 0; i < list.Count; i++)
+            {
+                for (var j = i+1; j < list.Count; j++)
+                {
+                    var c = CountCandidateItems(list[i].ItemSet, list[j].ItemSet);
+                }
+            }
+            
+
+            return candidates;
+        }
+
+        private static int CountCandidateItems(List<string> itemSet1, List<string> itemSet2)
+        {
+            return 0;
         }
     }
 }
