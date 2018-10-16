@@ -1,0 +1,6 @@
+EtravAdmin/bin/
+EtravAdmin/bin/*
+EtravAdmin/obj/
+EtravAdmin/obj/*
+.vs/
+.vs/*
