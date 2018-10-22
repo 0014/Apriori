@@ -42,8 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Candidate.cs" />
+    <Compile Include="Model\Candidates.cs" />
     <Compile Include="Model\Mapping.cs" />
+    <Compile Include="Model\ScannedItem.cs" />
     <Compile Include="Model\Transaction.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
