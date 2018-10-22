@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Apriori_1.Model;
 
-namespace Apriori_1.Services
+namespace Apriori_1.Extentions
 {
     public static class CleanData
     {

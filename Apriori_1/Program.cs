@@ -1,6 +1,8 @@
-﻿using Apriori_1.Services;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using Apriori_1.Extentions;
+using Apriori_1.Model;
 
 namespace Apriori_1
 {
@@ -15,9 +17,24 @@ namespace Apriori_1
             // clean transactions
             var transactions = CleanData.Clean(args[0], args[1]);
             // run apriori
-            var outputLines = Apriori.Apply(transactions, support);
+            var candidates = new Candidates { Level = 1 };
+            //generate for candidates
+            candidates = candidates.GenerateFirstLevelCandidates(transactions)
+                .ScanCandidates(transactions)
+                .ReturnFrequentItemList(support);
+            candidates.Print();
+            // generate the rest candidates untill no candidate memebers exist
+            while (candidates.CandidateItems.Count != 0)
+            {
+                candidates = candidates.GenerateCandidates()
+                    .RemoveDuplicates()
+                    .ScanCandidates(transactions)
+                    .ReturnFrequentItemList(support);
+                    
+                candidates.Print(); 
+            }
             // write result in putput file
-            File.WriteAllLines(output, outputLines);
+            File.WriteAllLines(output, new List<string>());
             Console.ReadKey();
         }
 
