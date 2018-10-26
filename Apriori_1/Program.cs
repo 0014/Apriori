@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Apriori_1.Extentions;
 using Apriori_1.Model;
 
@@ -19,10 +20,12 @@ namespace Apriori_1
             // run apriori
             var candidates = new Candidates { Level = 1 };
             //generate for candidates
+            var list = new List<string>();
             candidates = candidates.GenerateFirstLevelCandidates(transactions)
                 .ScanCandidates(transactions)
                 .ReturnFrequentItemList(support);
             candidates.Print();
+            list.AddRange(candidates.CandidateItems.Select(_ => _.ItemSet).ToList());
             // generate the rest candidates untill no candidate memebers exist
             while (candidates.CandidateItems.Count != 0)
             {
@@ -31,10 +34,11 @@ namespace Apriori_1
                     .ScanCandidates(transactions)
                     .ReturnFrequentItemList(support);
                     
-                candidates.Print(); 
+                candidates.Print();
+                list.AddRange(candidates.CandidateItems.Select(_ => _.ItemSet).ToList());
             }
             // write result in putput file
-            File.WriteAllLines(output, new List<string>());
+            File.WriteAllLines(output, list);
             Console.ReadKey();
         }
 
