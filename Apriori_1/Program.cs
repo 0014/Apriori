@@ -11,12 +11,18 @@ namespace Apriori_1
     {
         static void Main(string[] args)
         {
-            args = new[] {"unclean_data.txt", "code_mapping.txt", "2", "out.txt"}; // remove me when test is over
+            //args = new[] {"unclean_data.txt", "code_mapping.txt", "2", "out.txt"}; // remove me when test is over
+            args = new[] { "practice_data.txt", "8", "out.txt"}; // remove me when test is over
+            List<Transaction> transactions = new List<Transaction>();
             // get arguments
-            var support = int.Parse(args[2]);
-            var output = args[3];
-            // clean transactions
-            var transactions = CleanData.Clean(args[0], args[1]);
+            var support = int.Parse(args[args.Length - 2]);
+            var output = args[args.Length - 1];
+            if (args.Length == 4)
+                // clean transactions
+                transactions = CleanData.Unclean(args[0], args[1]);
+            else if (args.Length == 3)
+                transactions = CleanData.Clean(args[0]);
+
             // run apriori
             var candidates = new Candidates { Level = 1 };
             //generate for candidates

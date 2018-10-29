@@ -10,12 +10,19 @@ namespace Apriori_1.Extentions
 {
     public static class CleanData
     {
-        public static List<Transaction> Clean(string uncleanTxt, string mapTxt)
+        public static List<Transaction> Unclean(string uncleanTxt, string mapTxt)
         {
             var uncleanTransactions= ItemizeTransaction(new List<string>(File.ReadAllLines(uncleanTxt))); 
             var map = MapBuilder(new List<string>(File.ReadAllLines(mapTxt)));
 
             return CleanTransactions(uncleanTransactions, map);
+        }
+
+        public static List<Transaction> Clean(string transactionFile)
+        {
+            var transactions = new List<string>(File.ReadAllLines(transactionFile));
+
+            return ItemizeTransaction(transactions);
         }
 
         private static List<Transaction> ItemizeTransaction(List<string> rawData)
