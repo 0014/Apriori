@@ -1,9 +1,11 @@
-﻿using System;
+﻿//Class Info: CS634-101 Data Mining
+//Author: Arif Gencosmanoglu
+//File Name: cs634_arif-gencosmanoglu_apriori_8..txt
+//Due: 11:59pm on Monday October 29
+//Purpose: Finding the frequently bought items based on transaction data
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Apriori_1.Model;
 
 namespace Apriori_1.Extentions
